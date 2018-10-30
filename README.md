@@ -16,5 +16,20 @@
 cmd>{%redis%}/redis-cli -h ip地址 -p 端口号　　ip 默认为本地 -p 默认6379 <br>
 ### 简单操作：<br>
 ```
-set name"hello,redis"　　get name　单一的设置获取<br>
+set name"hello,redis"　　get name　单一的设置获取
+mset name mml age 18     mget name age 同时设置/获取一个或多个 key-value 对
+keys *  //获取所有key列表
+del key  //删除key
+expire key xx //设置key的过期时间(xx秒后过期)
+ttl key //查看key的过期时间
+flushall //清空整个redis服务器数据，所有的数据库全部清空
+flushdb  //清除当前库，redis中默认有16个数据库，名称分别为0,1,2.。。15
+
+```
+### Java用jedis操作redis：<br>
+```
+Jedis jedis = new jedis(ip地址);
+jedis.set("name","mml");
+关闭连接
+jedis.close();
 ```
